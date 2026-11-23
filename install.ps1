@@ -324,8 +324,16 @@ if (-not $DryRun) {
     if (-not (Test-Path -LiteralPath $ConfigDir -PathType Container)) {
         New-Item -ItemType Directory -Path $ConfigDir -Force | Out-Null
     }
-} elseif (-not (Test-Path -LiteralPath $ConfigDir -PathType Container)) {
-    Write-Host "[dry-run] mkdir $ConfigDir"
+    if (-not (Test-Path -LiteralPath $AgentsSkillsDir -PathType Container)) {
+        New-Item -ItemType Directory -Path $AgentsSkillsDir -Force | Out-Null
+    }
+} else {
+    if (-not (Test-Path -LiteralPath $ConfigDir -PathType Container)) {
+        Write-Host "[dry-run] mkdir $ConfigDir"
+    }
+    if (-not (Test-Path -LiteralPath $AgentsSkillsDir -PathType Container)) {
+        Write-Host "[dry-run] mkdir $AgentsSkillsDir"
+    }
 }
 
 foreach ($dirName in @('rules', 'skills', 'hooks')) {

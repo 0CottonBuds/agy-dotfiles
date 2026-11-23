@@ -230,9 +230,14 @@ main() {
   echo "Python: $PYTHON_BIN"
 
   if [[ "$DRY_RUN" -eq 0 ]]; then
-    mkdir -p "$CONFIG_DIR"
-  elif [[ ! -d "$CONFIG_DIR" ]]; then
-    echo "[dry-run] mkdir -p $CONFIG_DIR"
+    mkdir -p "$CONFIG_DIR" "$AGENTS_SKILLS_DIR"
+  else
+    if [[ ! -d "$CONFIG_DIR" ]]; then
+      echo "[dry-run] mkdir -p $CONFIG_DIR"
+    fi
+    if [[ ! -d "$AGENTS_SKILLS_DIR" ]]; then
+      echo "[dry-run] mkdir -p $AGENTS_SKILLS_DIR"
+    fi
   fi
 
   for item in AGENTS.md skills.json rules skills hooks; do
