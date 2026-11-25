@@ -1,5 +1,4 @@
 # Community skills installed into ~/.agents/skills/ via `npx skills add`
 # Format: <owner/repo> <skill-name>
-vercel-labs/skills find-skills
 vercel-labs/agent-skills vercel-react-best-practices
 vercel-labs/agent-skills vercel-composition-patterns
